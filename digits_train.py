@@ -21,14 +21,14 @@ model = tf.keras.models.Sequential()
 # Add flat (1-dimensional) layer consisting of the 28x28 resolution images
 model.add(tf.keras.layers.Flatten(input_shape=(28,28)))
 # Add 2 dense (all neurons connected to previous and next layer) convolutional hidden layers. They both use the relu linear rectification activator.
-model.add(tf.keras.layers.Dense(units=128, activation=tf.nn.relu))
-model.add(tf.keras.layers.Dense(units=128, activation=tf.nn.relu))
-# Add dense layer - converts output to a frequency that corresponds to the likelyhood that each digit represents a specific number
+model.add(tf.keras.layers.Dense(units=256, activation=tf.nn.relu))
+model.add(tf.keras.layers.Dense(units=256, activation=tf.nn.relu))
+# Add dense layer - converts output to a frequency that corresponds to the likelihood that each digit represents a specific number
 model.add(tf.keras.layers.Dense(units=10, activation=tf.nn.softmax))
 
 # Compile model with Adam algorithm for stochastic gradient descent and a loss function dedicated to multiple categorical labels
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
-# Train model on data with a certain number of total repetitions
+# Train model on data with 4 epochs. Testing has shown insignificant optimizations after 3 epochs.
 model.fit(x_train, y_train, epochs=4)
 accuracy, loss = model.evaluate(x_test, y_test)
 print(accuracy)
