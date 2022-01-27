@@ -80,6 +80,7 @@ for images, _ in train_ds.take(1):
   for i in range(9):
     augmented_images = data_augmentation(images)
     ax = plt.subplot(3, 3, i + 1)
+    # Note some TF post-processing may want Float32 datatype
     plt.imshow(augmented_images[0].numpy().astype("uint8"))
     plt.axis("off")
 
