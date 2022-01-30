@@ -1,0 +1,8 @@
+test/
+models/
+
+*.h5
+
+*.png
+*.jpg
+*.jpeg
