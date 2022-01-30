@@ -1,6 +1,7 @@
 # Contributing Guidelines
 
 **Style Standard: PEP8**
+
 **Rules specified below take precedent over PEP8.**
 
 
