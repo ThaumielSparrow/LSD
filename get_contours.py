@@ -1,5 +1,7 @@
 '''
 Module to locate contours to find multiple digits in a single image. Saves images to CWD as "roi[iter].png".
+
+Author: Luzhou Zhang
 '''
 from types import ModuleType
 import cv2 as cv
@@ -40,7 +42,7 @@ class DigitsByContour():
         i = 0
 
         for cnt in cnts:
-            # Check the area of contour, if it is very small ignore it
+            # Check the area of contour, may need to refine this
             if(cv.contourArea(cnt) < 100):
                 continue
             # Detect filtered contours
@@ -64,12 +66,14 @@ class DigitsByContour():
 # Testing Block
 def main():
     get_contours = DigitsByContour()
-    contours = get_contours.digits_by_countour('clocknum.png', save=False)
+    contours, orig_marked = get_contours.digits_by_countour('clocknum.png', save=False, passOrig=True)
     # cv.imshow('Image', orig)
     # cv.waitKey(0)
-    for i in range(1, contours.size):
-        plt.imshow(contours[i-1])
-        plt.show()
+    plt.imshow(orig_marked)
+    plt.show()
+    # for i in range(1, contours.size):
+    #     plt.imshow(contours[i-1])
+    #     plt.show()
 
 if __name__ == '__main__':
     main()
