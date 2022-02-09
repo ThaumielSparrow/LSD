@@ -34,7 +34,7 @@ class DigitsByContour():
         ret, thresh1 = cv.threshold(img_blur_RGB, 127, 256, cv.THRESH_BINARY_INV)
         dilate = cv.dilate(thresh1, None, iterations=2)
 
-        cnts = cv.findContours(dilate.copy(), cv.RETR_EXTERNAL, cv.cv2.CHAIN_APPROX_SIMPLE)
+        cnts = cv.findContours(dilate.copy(), cv.RETR_TREE, cv.cv2.CHAIN_APPROX_SIMPLE)
         # Case for first element when OpenCV is v4+
         cnts = cnts[0] # if imutils.is_cv2() else cnts[1]
 
